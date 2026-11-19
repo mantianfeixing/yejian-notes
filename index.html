@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#253f72">
+  <meta name="description" content="页间，一本保存在自己设备上的 Markdown 笔记本。">
+  <title>页间 · 个人笔记本</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <aside class="shelf" id="shelf" aria-label="笔记列表">
+    <header class="identity"><span class="mark" aria-hidden="true"><i></i></span><div><strong>页间</strong><small>YEJIAN NOTES</small></div>
+      <button id="closeShelf" class="mobile quiet" aria-label="关闭笔记列表">×</button></header>
+    <button class="new" id="new"><span aria-hidden="true">＋</span> 新建笔记</button>
+    <label class="search"><i aria-hidden="true"></i><input id="search" type="search" placeholder="搜索笔记" aria-label="搜索标题或正文"><kbd>/</kbd></label>
+    <div class="list-head"><h2>全部笔记</h2><span id="total">0</span></div>
+    <nav id="list" aria-label="全部笔记"></nav>
+    <footer class="shelf-foot"><button id="openFile" class="open-file"><span aria-hidden="true">＋</span> 打开 Markdown 文件</button>
+      <div class="device"><i aria-hidden="true"></i> 笔记保存在此浏览器</div></footer>
+  </aside>
+  <button id="shade" class="shade" aria-label="收起笔记列表" hidden></button>
+  <main>
+    <header class="bar">
+      <div class="crumb"><button id="showShelf" class="mobile quiet" aria-label="展开笔记列表">☰</button><span class="tiny-book" aria-hidden="true"></span><span>我的笔记本</span><b aria-hidden="true">/</b><strong id="crumb">笔记</strong></div>
+      <div class="actions"><button id="writeBack" hidden>存回原文件</button><button id="download">导出 .md</button></div>
+    </header>
+    <section class="page">
+      <div class="paper">
+        <div class="paper-top"><span class="paper-label"><i aria-hidden="true"></i> 笔记正文</span><div class="view" role="group" aria-label="显示方式"><button id="read" aria-pressed="true">阅读</button><button id="edit" aria-pressed="false">编辑</button></div></div>
+        <h1 id="readTitle"></h1><input id="title" class="title" placeholder="无标题笔记" aria-label="笔记标题" hidden>
+        <div class="byline"><span id="date"></span><span aria-hidden="true">·</span><span id="count">0 字</span></div>
+        <article id="article" aria-label="笔记预览"></article>
+        <textarea id="body" aria-label="Markdown 正文" placeholder="从这一行开始写，支持 Markdown…" spellcheck="false" hidden></textarea>
+        <div id="empty" hidden>从「新建笔记」开始写第一篇。</div>
+      </div>
+      <footer class="paper-foot"><span id="status" role="status" aria-live="polite"></span><button id="remove" class="quiet">移除此笔记</button></footer>
+    </section>
+  </main>
+  <input type="file" id="picker" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden>
+  <dialog id="confirmRemove"><form method="dialog"><h2>从笔记本移除？</h2><p>这会移除此浏览器中的副本。已导出的文件会保留。</p><div><button value="cancel" autofocus>取消</button><button value="remove">移除</button></div></form></dialog>
+</body>
+</html>
